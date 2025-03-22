@@ -1,0 +1,56 @@
+{% extends "header_footer.html"%}
+{% load static %}
+{% block content %}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"></h3>
+              <nav aria-label="breadcrumb">
+                
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Cart Table</h4>
+                    <!-- <a href="#">Insert</a> -->
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Cart ID</th>
+                          <th>Customer Name</th>
+                          <th>Product</th>
+                          <th>Quantity</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      {% for x in cart %}
+                      <tbody>
+                        <tr>
+                          <td>{{x.cart_id}}</td>
+                          <td>{{x.Customer_id.First_Name}}</td>
+                          <td>{{x.Product_id.Product_Name}}</td>
+                          <td>{{x.Quantity}}</td>
+                          <td>{{x.Total}}</td>
+                        </tr>
+                      
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+              
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="footer-inner-wraper">
+              
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      {% endblock %}

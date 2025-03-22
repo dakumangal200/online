@@ -1,0 +1,39 @@
+{% extends "header_footer.html"%}
+{% load static %}
+{% block content %}
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title"> Cafe Table </h3>
+        <nav aria-label="breadcrumb">
+          
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Cafe Table</h4>
+              
+               <form action="/assigntable/{{dg.Booking_id}}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="dropdown">Cafe Tables</label>
+                    <select name="Table_id">
+                        {% for i in ct %}
+                            <option value="{{i.Table_id}}">{{i.Table_id}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                    <button type="submit" class="btn btn-primary mr-2">Assign</button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+        
+
+
+{% endblock %}

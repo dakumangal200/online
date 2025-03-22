@@ -1,0 +1,71 @@
+{% extends "header_footer.html"%}
+{% load static %}
+{% block content %}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Customer Table </h3>
+              <nav aria-label="breadcrumb">
+                
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Customer Table</h4>
+                    
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Customer_id</th>
+                          <th>First_Name</th>
+                          <th>Last_Name</th>
+                          <th>Email</th>
+                          <th>Password</th>
+                          <th>Phone</th>
+                          <th>Address</th>
+                          <th>Area_id</th>
+                          <th>is_admin</th>
+                        </tr>
+                      </thead>
+                      {% for x in customer %}
+                      <tbody>
+                        <tr>
+                          <td>{{x.Customer_id}}</td>
+                          <td>{{x.First_Name}}</td>
+                          <td>{{x.Last_Name}}</td>
+                          <td>{{x.Email}}</td>
+                          <td>{{x.Password}}</td>
+                          <td>{{x.Phone}}</td>
+                          <td>{{x.Address}}</td>
+                          <td>{{x.Area_id.Area_name}}</td>
+                          <td>
+                            {% if x.is_admin == "0" %}
+                            Customer
+                            {% else %}
+                            Admin
+                            {% endif %}
+                          
+                            </td>
+                        </tr>
+                      
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+              
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="footer-inner-wraper">
+              
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      {% endblock %}

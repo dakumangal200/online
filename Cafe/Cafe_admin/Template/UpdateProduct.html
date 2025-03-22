@@ -1,0 +1,70 @@
+{% extends "header_footer.html"%}
+{% load static %}
+{% block content %}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Update Product </h3>
+              <nav aria-label="breadcrumb">
+                
+              </nav>
+            </div>
+            <div class="row">
+              
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    
+                    <form class="forms-sample" method="post" action="/updateproduct/{{Pro.Product_id}}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleInputName1">Product</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="" name="Product_Name" value="{{Pro.Product_Name}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Price</label>
+                        <input type="textbox" class="form-control" id="exampleInputName1" placeholder="" name="Price" value="{{Pro.Price}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Description</label>
+                        <input type="textbox" class="form-control" id="exampleInputName1" placeholder="" name="Description" value="{{Pro.Description}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Image </label>
+                        <input type="file" class="form-control" id="exampleInputName1" placeholder="" name="Product_image" value="{{Pro.Product_image}}">
+                      </div>
+                      <div class="form-group">
+                        <label class="dropdown">Category</label>
+                          <select name="Category_id"  >
+                            {% for i in cate %}
+                              <option value="{{i.Category_id}}"  >{{i.Category_Name}}</option>
+                            {% endfor %}
+                          </select>
+                          
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="exampleInputName1">Quantity</label>
+                        <input type="textbox" class="form-control" id="exampleInputName1" placeholder="" name="Quantity" value="{{Pro.Quantity}}">
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Update</button>
+                      
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="footer-inner-wraper">
+              
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      {% endblock %}

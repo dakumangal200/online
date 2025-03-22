@@ -1,0 +1,158 @@
+{% extends "header_footer.html" %}
+{% load static%}
+{% block content%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row" id="proBanner">
+              <div class="col-12">
+                
+              </div>
+            </div>
+            <div class="d-xl-flex justify-content-between align-items-start">
+              <h2 class="text-dark font-weight-bold mb-2"> Overview dashboard </h2>
+              <div class="d-sm-flex justify-content-xl-between align-items-center mb-2">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border ">
+                </div>
+                <div class="tab-content tab-transparent-content">
+                  <div class="tab-pane fade show active" id="business-1" role="tabpanel" aria-labelledby="business-tab">
+                    <div class="row">
+                      <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
+                        <div class="card">
+                          
+                          <div class="card-body text-center">
+                                        
+                             <h5 class="mb-2 text-dark font-weight-normal">Orders</h5> 
+                             <h2 class="mb-4 text-dark font-weight-bold"></h2>
+                             <div class="dashboard-progress dashboard-progress-1 d-flex align-items-center justify-content-center item-parent">
+                                 <i class="mdi mdi-lightbulb icon-md absolute-center text-dark"></i></div>
+                             <h3 class="mb-0 font-weight-bold mt-2 text-dark">{{order}}</h3>
+                         </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="mb-2 text-dark font-weight-normal">User</h5>
+                                <h2 class="mb-4 text-dark font-weight-bold"></h2>
+                                <div class="dashboard-progress dashboard-progress-1 d-flex align-items-center justify-content-center item-parent">
+                                    <i class="mdi mdi-lightbulb icon-md absolute-center text-dark"></i></div>
+                                <h3 class="mb-0 font-weight-bold mt-2 text-dark">{{customer}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
+                      <div class="card">
+                          <div class="card-body text-center">
+                              <h5 class="mb-2 text-dark font-weight-normal">FeedBack</h5>
+                              <h2 class="mb-4 text-dark font-weight-bold"></h2>
+                              <div class="dashboard-progress dashboard-progress-1 d-flex align-items-center justify-content-center item-parent">
+                                  <i class="mdi mdi-lightbulb icon-md absolute-center text-dark"></i></div>
+                              <h3 class="mb-0 font-weight-bold mt-2 text-dark">{{ feedback }}</h3>
+                          </div>
+                      </div>
+                  </div>
+                      
+                    </div>
+                    
+                    
+                  </div>
+                </div>
+                <div class="main-panel">
+                  <div class="content-wrapper">
+                    <div class="page-header">
+                      <h3 class="page-title"> Order Table </h3>
+                      <nav aria-label="breadcrumb">
+                        
+                      </nav>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-20 grid-margin stretch-card table-responsive">
+                        <div class="card">
+                          <div class="card-body">
+                            <h4 class="card-title">Order Table</h4>
+                             <table class="table table-responsive">
+                              <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer ID</th>
+                                    <th>Order date</th>
+                                    
+                                    <th>Total Amount</th>
+                                    <th>Order Status</th>
+                                    <th>Payment Status</th>
+                                    
+                                    <th>Accept/Reject</th>
+                                    <th>View Order </th>
+                                </tr>
+                              </thead>
+                              {% for x in pending %}
+                              <tbody>
+                                <tr>
+                                  <td>{{x.Order_id}}</td>
+                                  <td>{{x.Customer_id.First_Name}}</td>
+                                  <td>{{x.Order_Date}}</td>
+                                  
+                                  <td>{{x.Total_Amount}}</td>
+                                  <td>
+                                  {% if x.Order_status == "0" %}
+                                  Pending
+                                  {% elif x.Order_status == "1" %}
+                                  Accept
+                                  {% elif x.Order_status == "2" %}
+                                  Reject
+                                  {% endif %}
+                                  </td>
+                                  <td>
+                                    {% if x.Payment_status == '0'%}
+                                    Pending
+                                    {% elif x.Payment_status == '1'%}
+                                    Paid
+                                    {% elif x.Payment_status == '2'%}
+                                    Not Paid
+                                    {% endif %}
+                                    </td>
+                                  
+                                  <td>
+                                    {% if x.Order_status == '0' %}
+        
+                                    <a href="/accept/{{x.Order_id}}"><img src="{% static 'images/Accept.png' %}" ></a>
+                                      <a href="/reject/{{x.Order_id}}"><img src="{% static 'images/Reject.png' %}"></a>
+                                    {% endif %}
+                                  </td>
+                                  <td><a href="/orderitem/{{x.Order_id}}"><img src="{% static '/assets/images/view.jpg' %}"></a></td>
+                                </tr>
+                              {% endfor %}
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      
+                  <!-- content-wrapper ends -->
+                  <!-- partial:../../partials/_footer.html -->
+                  <footer class="footer">
+                    <div class="footer-inner-wraper">
+                      
+                    </div>
+                  </footer>
+                  <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+          <!-- <script src="{% static 'assets/vendors/chart.js/Chart.min.js' %}"></script> -->
+          <script src="{% static 'assets/vendors/jquery-circle-progress/js/circle-progress.min.js' %}"></script>
+          <script src="{% static 'assets/js/off-canvas.js' %}"></script>
+          <script src="{% static '/assets/js/hoverable-collapse.js' %}"></script>
+          <script src="{% static 'assets/js/misc.js' %}"></script>
+          <script src="{% static '/assets/js/dashboard.js' %}"></script>
+          {% endblock %}

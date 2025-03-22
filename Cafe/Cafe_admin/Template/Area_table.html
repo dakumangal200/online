@@ -1,0 +1,54 @@
+{% extends "header_footer.html"%}
+{% load static %}
+{% block content %}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"></h3>
+              <nav aria-label="breadcrumb">
+                
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Area Table</h4>
+                    <a href="/insertarea/"><img height="30px" width="30px" src="{% static 'assets/images/insert.svg' %}"></a>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Area ID</th>
+                          <th>Area Name</th>
+                          <th>Delete</th>
+                          <th>Update</th>
+                        </tr>
+                      </thead>
+                      {% for x in area %}
+                      <tbody>
+                        <tr>
+                          <td>{{x.Area_id}}</td>
+                          <td>{{x.Area_name}}</td>
+                          <td><a href="/deletearea/{{x.Area_id}}"><img src="{% static 'assets/images/delete.svg' %}" alt=""></a></td>
+                          <td><a href="/updatearea/{{x.Area_id}}"><img src="{% static 'assets/images/update1.svg' %}" alt=""></a></td>
+                        </tr>
+                      
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+              
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="footer-inner-wraper">
+              
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      {% endblock %}

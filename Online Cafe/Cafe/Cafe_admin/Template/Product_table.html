@@ -1,0 +1,65 @@
+{% extends "header_footer.html"%}
+{% load static %}
+{% block content %}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Product Table </h3>
+              <nav aria-label="breadcrumb">
+                
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-lg-100 grid-margin table-responsive "> 
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Product Table</h4>
+                    <a href="/insertproduct/"><img height="30px" width="30px" src="{% static 'assets/images/insert.svg' %}"></a>
+                     <table class="table table-responsive">
+                      <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Product Image</th>
+                            <th>Category </th>
+                            <th>Quantity</th>
+                            <th>Delete</th>
+                            <th>Update</th>
+                        </tr>
+                      </thead>
+                      {% for x in product %}
+                      <tbody>
+                        <tr>
+                          <td>{{x.Product_id}}</td>
+                          <td>{{x.Product_Name}}</td>
+                          <td>{{x.Price}}</td>
+                          <td><textarea border="0" id="" cols="30" rows="10">{{x.Description}}</textarea></td>
+                          <td><img src="{% static '/assets/images/'%}{{x.Product_image}}" height="60px" width="60px"></td>
+                          <td>{{x.Category_id.Category_Name}}</td>
+                          <td>{{x.Quantity}}</td>
+                          <td><a href="/deleteproduct/{{x.Product_id}}"><img src="{% static 'assets/images/delete.svg' %}" alt=""></a></td>
+                          <td><a href="/updateproduct/{{x.Product_id}}"><img src="{% static 'assets/images/update1.svg' %}" alt=""></a></td>
+
+                        </tr>
+                      
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+              
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="footer-inner-wraper">
+              
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      {% endblock %}

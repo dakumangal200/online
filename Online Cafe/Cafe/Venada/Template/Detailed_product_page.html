@@ -1,0 +1,134 @@
+{% extends "Client_header_footer.html" %}
+{% load static %}
+
+{% block content %}
+
+	<div id="fh5co-about" class="fh5co-section">
+		<div class="container">
+            
+			<div class="row">
+				<div class="col-md-6 col-md-pull-1 img-wrap " data-animate-effect="fadeInLeft">
+					<img class="img-responsive" src="{% static '/images/' %}{{blog.Product_image}}" height="450px" width="380px">
+				</div>
+				<div class="col-md-5 col-md-push-2 animate-box">
+					<div class="section-heading">
+						<h2>{{blog.Product_Name}}</h2>
+						<p>{{blog.Description}}</p>
+                        <h3 style="color: white;">Price: ₹{{blog.Price}}</h3>
+						<form action="/Client/insertitem/" method="post" style="color: black;">
+							{% csrf_token %}
+							<input type="hidden" name="pid" value="{{blog.Product_id}}">
+							<input type="hidden" name="qty" value="1">
+							<a href="/Client/insertitem/" class="btn btn-primary"><button type="submit" class="btn btn-primary ">Add To Cart</button></a>
+
+						</form>
+						
+					</div>
+				</div>
+			</div>
+            
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-5 col-md-push-2 col-sm-2 col-sm-push-1 col-md-offset-2">
+			<form action="/Client/insfeedback/" method="post" id="form-wrap">
+				{% csrf_token %}
+				<h3 style="color: white;">Feedback</h3>
+				<div class="row form-group">
+						<label for="name"></label>
+						<input type="hidden" class="form-control" id="name" name="Customer_id">
+				</div>
+				<div class="row form-group">
+						<label for="name"></label>
+						<input type="hidden" class="form-control" id="name" name="Product_id" value="{{blog.Product_id}}">
+				</div>
+				<div class="row form-group">
+					<div class="col-md-12">
+						<label for="message">Description</label>
+						<textarea name="Description" id="message" cols="10" rows="5" class="form-control"></textarea>
+					</div>
+				</div>
+				<div class="row form-group">
+						<label for="message"></label>
+						<input type="hidden" class="form-control" id="name" name="Feedback_date">
+				</div>
+				<div class="row form-group">
+					<div class="col-md-4">
+						<input type="submit" class="btn btn-primary btn-outline btn-lg" value="Submit Form">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	
+	
+	<div id="fh5co-started" class="fh5co-section animate-box" style="background-image: url(/static/images/hero_1.jpg);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Book a Table</h2>
+					<p>Indulge in a culinary journey like never before by reserving your table at Venada. Elevate your dining experience with our delectable menu, warm ambiance, and impeccable service.</p>
+					<p><a href="/Client/reservation/" class="btn btn-primary btn-outline">Book Now</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer id="fh5co-footer" role="contentinfo" class="fh5co-section">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-4 fh5co-widget">
+					<h4>Venada</h4>
+					<p>Indulge in cozy ambiance and delectable flavors at our cafe. Sip, savor, and share moments with freshly brewed delights and artisanal treats. Your perfect escape for a delightful pause.</p>
+				</div>
+				<div class="col-md-2 col-md-push-1 fh5co-widget">
+					<h4>Links</h4>
+					<ul class="fh5co-footer-links">
+						<li><a href="/Client/clientindex">Home</a></li>
+						<li><a href="/Client/aboutus">About</a></li>
+						<li><a href="/Client/menu/0">Menu</a></li>
+						
+
+					</ul>
+				</div>
+
+				
+
+				<div class="col-md-4 col-md-push-1 fh5co-widget">
+					<h4>Contact Information</h4>
+					<ul class="fh5co-footer-links">
+						<li>123 West 21th Street, <br> Suite 123 Ahemedabad Gujarat 123456</li>
+						<li>+91 1234567890</li>
+						<li>infovenada@gmail.com</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="row copyright">
+				<div class="col-md-12 text-center">
+					<p>
+						<a href="/Client/clientindex/"><img src="/static/images/Color logo - no background.svg" height="100px" width="130px"></a>
+					</p>
+					<p>
+						<small class="block">&copy; 2024 Venada All Rights Reserved.</small> 
+					</p>
+					<p>
+						<ul class="fh5co-social-icons">
+							<li><a href="#"><i class="icon-twitter2"></i></a></li>
+							<li><a href="#"><i class="icon-facebook2"></i></a></li>
+							<li><a href="#"><i class="icon-instagram2"></i></a></li>
+
+						</ul>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	</div>
+	{% endblock %}
+
+	

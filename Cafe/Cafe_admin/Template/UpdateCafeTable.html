@@ -1,0 +1,58 @@
+{% extends "header_footer.html"%}
+{% load static %}
+{% block content %}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Update Cafe Table </h3>
+              <nav aria-label="breadcrumb">
+               
+              </nav>
+            </div>
+            <div class="row">
+              
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    
+                    <form class="forms-sample" method="post" action="/updatecafetable/{{Cafe.Table_id}}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleInputName1">Layout Image</label>
+                        <input type="file" class="form-control" id="exampleInputName1" placeholder="Layout Image" name="Layout_Image" value="{{Cafe.Layout_Image}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">No Of seats</label>
+                        <input type="textbox" class="form-control" id="exampleInputName1" placeholder="No of seats" name="No_of_seats" value="{{Cafe.No_of_seats}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Avaibility</label>
+                        <input type="textbox" class="form-control" id="exampleInputName1" placeholder="Avaibility" name="Avaibility_status" value="{{Cafe.Avaibility_status}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Description</label>
+                        <input type="textbox" class="form-control" id="exampleInputName1" placeholder="Description" name="Description" value="{{Cafe.Description}}">
+                      </div>
+                      
+                      
+                      <button type="submit" class="btn btn-primary mr-2">Update</button>
+                      
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="footer-inner-wraper">
+              
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      {% endblock %}

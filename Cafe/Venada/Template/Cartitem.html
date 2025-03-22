@@ -1,0 +1,226 @@
+{% extends "Client_header_footer.html" %}
+{% load static %}
+{% block content %}
+<script>
+    function up(max){
+        
+        var qty=parseInt(document.getElementById("qty-"+max).value)+1;
+        document.getElementById("qty-"+max).value = qty ;
+        getQty(max);
+    }
+    function down(min){
+        
+        var qty=parseInt(document.getElementById("qty-"+min).value)-1;
+        if(qty==0)
+            return false;
+        else
+            document.getElementById("qty-"+min).value=qty;
+            getQty(min);
+    }
+    function getQty(val){
+    
+        var q=$("#qty-"+val).val();
+        
+        $.ajax({
+            type:'GET',
+            url:'/Client/updatecart/'+val,data:{id:val,qty:q},
+            success: function(data){
+                location.reload();}
+        });
+    }
+    function getQtyPlus(val){
+        
+        var q=$("#qty-"+val).val();
+        $ajax({
+            type:'GET',
+            url:'/Client/updatecart/'+val,data:{id:val,qty:q},
+            success: function(data){
+                location.reload();}
+
+        })
+    }
+    function getQtyMinus(val){
+        
+        var q=$("#qty-"-val).val();
+        $ajax({
+            type:'GET',
+            url:'/Client/updatecart/'+val,data:{id:-val,qty:q},
+            success: function(data){
+                location.reload();}
+        })
+    }
+</script>
+
+<input type="hidden" name="Product_id" value="{{Product.id}}">
+<div id="fh5co-reservation-form" class="fh5co-section">
+
+<div class="row form-group">
+<div class="col-md-6 col-md-push-3 col-sm-6 col-sm-push-3">
+    <h2 style="color: white;">Cart</h2>
+    <table border="1">
+        <tr>
+            <th>Customer Name</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th><i class="ti-minus"></i></th>
+            
+        </tr>
+    {% if 'customer_id' in request.session  %}
+        {% for data in items %}
+        <tr>
+            <td class="col-md-4">{{data.Customer_id.First_Name}}</td>
+            <td class="col-md-4">{{data.Product_id.Product_Name}}</td>
+            <td class="col-md-4">{{Quantity}}
+                <div class="product count" >
+                    <button style="text-align: center; height: 30px; width: 20px; color: white;"
+                    id="down1" class="btn btn-primary btn-outline" type="button" data-for="quantity1"
+                    onclick="down({{data.cart_id}})">-
+                    </button>
+                    <input style="color: black; height:30px; width: 30px; text-align:center;" class="count-rounded"
+                    type="text" id="qty-{{data.cart_id}}" value="{{data.Quantity}}"
+                    onChange="getQty{{data.Quantity}}" min="1" name="qty" readonly>
+                    <button style="height: 30px; width: 20px; color: white;"
+                    type="button"
+                    class="btn btn-primary btn-outline" id="up1"
+                    data-for="quantity1"
+                    onclick="up({{data.cart_id}})">+
+                    </button>
+                </div>
+            </td>
+            <td class="col-md-4">₹{{data.Total}}</td>
+            
+            <td class="col-md-4"><a href="/Client/deletecart/{{data.cart_id}}">Delete</a></td>
+            
+        </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            {% for key,value in request.session.cartitems %}
+                <td class="col-md-4">{{data.Customer_id.First_Name}}</td>
+                <td class="col-md-4">{{data.Product_id.Product_Name}}</td>
+                <td class="col-md-4">{{Quantity}}
+                    <div class="product count" >
+                        <button style="color: white;text-align: center; height: 20px; width: 20px;"
+                        id="down1" class="btn btn-primary btn-outline" type="button" data-for="quantity1"
+                        onclick="down({{data.cart_id}})">-
+                        </button>
+                        <input style="color: black; height:30px; width: 30px; text-align:center;"
+                        type="text" id="qty-{{data.cart_id}}" value="{{data.Quantity}}"
+                        onChange="getQty{{data.Quantity}}" min="1" name="qty" readonly>
+                        <button style="color: white;height: 20px; width: 20px;"
+                        type="button"
+                        class="btn btn-primary btn-outline" id="up1"
+                        data-for="quantity1"
+                        onclick="up({{data.cart_id}})">+
+                        </button>
+                    </div>
+                </td>
+                <td class="col-md-4">₹{{data.Total}}</td>
+                
+                <td class="col-md-4"><a href="/Client/deletecart/{{value.cart_id}}">Delete</a></td>
+                
+            {% endfor %}
+        </tr>
+        {% endif %}
+    </table>
+<h3></h3>
+<h3></h3>
+    <div class="row form-group">
+        <h3 class="col-md-3" style="color: rgb(233, 71, 71);">Subtotal : ₹{{total}}</h3>
+        <h3 class="col-md-6" style="color: rgb(233, 71, 71);">Total : ₹{{shipping}}</h3>
+    </div>
+    <form method="post" action="/Client/Ordersave/">
+        {% csrf_token %}
+        <div class="payment_item">
+            <div class="radion_btn">
+                <input type="radio" value="2" id="pay" name="payment_mode"/>
+                <label for="pay">Online</label>
+            <div class="check"></div>
+            </div>
+            <div class="payment_item ">
+                <div class="radion_btn">
+                    <input type="radio" value="1" id="cod" name="payment_mode"/>
+                    <label for="cod">Cash on Delivery </label>
+                    <div class="check"></div>
+                </div>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-primary btn-outline"></input>
+    </form>
+</div>
+</div>
+</div>
+<div>
+    <center>
+        <p><a href="/Client/menu/0" class="btn btn-primary btn-outline">Add More</a></p>
+        <!-- <p><a href="/Client/Ordersave/" class="btn btn-primary btn-outline">Proceed To Next</a></p> -->
+    </center>
+</div>
+<div id="fh5co-started" class="fh5co-section animate-box" style="background-image: url(/static/images/Coffeeshop.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <h2>Book a Table</h2>
+                <p>Indulge in a culinary journey like never before by reserving your table at Venada. Elevate your dining experience with our delectable menu, warm ambiance, and impeccable service.</p>
+                <p><a href="/Client/reservation/" class="btn btn-primary btn-outline">Book Now</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="fh5co-footer" role="contentinfo" class="fh5co-section">
+    <div class="container">
+        <div class="row row-pb-md">
+            <div class="col-md-4 fh5co-widget">
+                <h4>Venada</h4>
+                <p>Indulge in cozy ambiance and delectable flavors at our cafe. Sip, savor, and share moments with freshly brewed delights and artisanal treats. Your perfect escape for a delightful pause.</p>
+            </div>
+            <div class="col-md-2 col-md-push-1 fh5co-widget">
+                <h4>Links</h4>
+                <ul class="fh5co-footer-links">
+                    <li><a href="/Client/clientindex">Home</a></li>
+                    <li><a href="/Client/aboutus">About</a></li>
+                    <li><a href="/Client/menu/0">Menu</a></li>
+                    
+
+                </ul>
+            </div>
+
+            
+
+            <div class="col-md-4 col-md-push-1 fh5co-widget">
+                <h4>Contact Information</h4>
+                <ul class="fh5co-footer-links">
+                    <li>123 West 21th Street, <br> Suite 123 Ahemedabad Gujarat 123456</li>
+                    <li>+91 1234567890</li>
+                    <li>infovenada@gmail.com</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="row copyright">
+            <div class="col-md-12 text-center">
+                <p>
+                    <a href="/Client/clientindex/"><img src="/static/images/Color logo - no background.svg" height="100px" width="130px"></a>
+                </p>
+                <p>
+                    <small class="block">&copy; 2024 Venada All Rights Reserved.</small> 
+                </p>
+                <p>
+                    <ul class="fh5co-social-icons">
+                        <li><a href="#"><i class="icon-twitter2"></i></a></li>
+                        <li><a href="#"><i class="icon-facebook2"></i></a></li>
+                        <li><a href="#"><i class="icon-instagram2"></i></a></li>
+
+                    </ul>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</footer>
+</div>
+{% endblock %}

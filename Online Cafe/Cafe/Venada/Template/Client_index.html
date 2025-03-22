@@ -1,0 +1,230 @@
+{% extends "Client_header_footer.html" %}
+{% load static %}
+{% block content %}
+
+	<div id="fh5co-about" class="fh5co-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-pull-4 img-wrap animate-box" data-animate-effect="fadeInLeft">
+					<img src="{% static 'images/hero_1.jpg' %}">
+				</div>
+				
+				<div class="col-md-5 col-md-push-1 animate-box">
+					<div class="section-heading">
+						<h2>The Restaurant</h2>
+						<p>Whether you're seeking a quiet moment of reflection, a lively catch-up with friends, or a productive work session, Venada invites you to savor the simple pleasures of life over a cup of exceptional coffee. Come, join us, and make every moment count.</p>
+						<p><a href="/Client/aboutus/" class="btn btn-primary btn-outline">Our History</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-featured-menu" class="fh5co-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 fh5co-heading animate-box">
+					<h2>Today's Menu</h2>
+					<div class="row">
+						<div class="col-md-6">
+							<p>Welcome to Venada, where every dish is a journey of flavors and a celebration of fresh, seasonal ingredients. Our chefs take pride in crafting a menu that reflects both creativity and a commitment to quality. Here's a glimpse into today's culinary offerings:</p>
+						</div>
+					</div>
+				</div>
+				<!-- {% for c in recent %}
+				<div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-item-wrap animate-box">
+					<div class="fh5co-item">
+						<a href="/Client/detail/{{c.Product_id}}"><img src="{% static 'images/' %}{{c.Product_image}}" class="img-responsive" alt=""></a>
+						<a href="/Client/detail/{{c.Product_id}}"><h3>{{c.Product_Name}}</h3></a>
+						<span class="fh5co-price">₹{{c.Price}}</span>
+						<p>{{c.Description}}</p>
+					</div>
+				</div>
+				{% endfor %} -->
+
+			</div>
+		</div>
+	</div>
+	<!-- <div id="fh5co-featured-testimony" class="fh5co-section">
+		
+	</div> -->
+	<div id="fh5co-slider" class="fh5co-section animate-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 animate-box">
+					<div class="fh5co-heading">
+						<h2>Our Best <em>&amp;</em> Unique Menu</h2>
+						<p>Embark on a culinary adventure with our Chef's Specials. Each dish is a unique masterpiece, carefully crafted to showcase premium ingredients and innovative flavors. From enticing appetizers to exquisite main courses, our menu promises a memorable dining experience. </p>
+					</div>
+				</div>
+				<div class="col-md-6 col-md-push-1 animate-box">
+					<aside id="fh5co-slider-wrwap">
+					<div class="flexslider">
+						<ul class="slides">
+					   	<li style="background-image: url(/static/images/MexicanaPizza.jpg);">
+					   		<div class="overlay-gradient"></div>
+					   		<div class="container-fluid">
+					   			<div class="row">
+						   			<div class="col-md-12 col-md-offset-0 col-md-pull-10 slider-text slider-text-bg">
+						   				<div class="slider-text-inner">
+						   					<div class="desc">
+													<h2>Pizza Mexicana</h2>
+													<p>Enjoy a taste of Mexico with Pizza Mexicana. This flavorful pie features a zesty tomato base topped with spicy salsa, savory seasoned meats, vibrant bell peppers, onions, and a generous sprinkling of melted cheese. Each bite is a fiesta of bold flavors, bringing the essence of Mexican cuisine to your pizza night.</p>
+						   					</div>
+						   				</div>
+						   			</div>
+						   		</div>
+					   		</div>
+					   	</li>
+					   	<li style="background-image: url(/static/images/Tuna);">
+					   		<div class="overlay-gradient"></div>
+					   		<div class="container-fluid">
+					   			<div class="row">
+						   			<div class="col-md-12 col-md-offset-0 col-md-pull-10 slider-text slider-text-bg">
+						   				<div class="slider-text-inner">
+						   					<div class="desc">
+													<h2>Tuna <em>&amp;</em> Roast Beef</h2>
+													<p>Experience a culinary fusion like no other with our Tuna Roast Beef dish. Sliced seared tuna meets succulent roast beef, creating a delightful surf-and-turf harmony. Seasoned to perfection, the beef enhances the mild, flaky texture of the tuna. Drizzled with a special sauce and garnished with fresh herbs, this innovative creation promises a satisfying and flavorful adventure for your palate. Discover the unexpected joy of Tuna Roast Beef Fusion, a perfect blend of land and sea on your plate.</p>
+						   					</div>
+						   				</div>
+						   			</div>
+						   		</div>
+					   		</div>
+					   	</li>
+					   	<li style="background-image: url(/static/images/Eggwithmushroom.jpg);">
+					   		<div class="overlay-gradient"></div>
+					   		<div class="container-fluid">
+					   			<div class="row">
+						   			<div class="col-md-12 col-md-offset-0 col-md-pull-10 slider-text slider-text-bg">
+						   				<div class="slider-text-inner">
+						   					<div class="desc">
+													<h2>Egg <em>with</em> Mushroom</h2>
+													<p>Savor a delightful blend of flavors with our Mushroom and Egg dish. Earthy mushrooms, sautéed to perfection, meet gently cooked eggs for a satisfying and nutritious experience. Seasoned with aromatic herbs, this simple yet flavorful ensemble is perfect on its own or as a versatile addition to your meal.</p>
+						   					</div>
+						   				</div>
+						   			</div>
+						   		</div>
+					   		</div>
+					   	</li>		   	
+					  	</ul>
+				  	</div>
+				</aside>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-blog" class="fh5co-section">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+					<h2>Events</h2>
+					<p>Dive into a world of entertainment and community at our upcoming events. From lively music nights to themed dinners, our diverse lineup promises unforgettable experiences. Join us for moments of connection, creativity, and joy. Stay tuned for memorable gatherings that leave a lasting impression. Your invitation to the extraordinary awaits!</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a class="blog-bg" style="background-image: url(/static/images/FamilyDinnerTable.jpg);"></a>
+						<div class="blog-text">
+							
+							<h3 style="color: white;">Family Dinner Table</h3>
+							<p>Gather your loved ones around our family dinner table for a heartwarming and delicious experience. Enjoy a welcoming atmosphere with comfortable seating, wholesome dishes, and the joy of togetherness. Our family-friendly environment is perfect for creating cherished moments, sharing laughter, and savoring a delightful meal with those who matter most.	</p>
+							
+						</div> 
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a class="blog-bg" style="background-image: url(/static/images/ValentinesTable.jpg);"></a>
+						<div class="blog-text">
+							
+							<h3 style="color: white;">Valentine's Special Table</h3>
+							<p>Ignite the flames of romance at our Valentine's special table. Picture an intimate setting adorned with candlelight, exquisite flowers, and a menu designed to captivate your senses. Whether it's a first date or a milestone celebration, let us create the perfect atmosphere for you and your special someone to share a memorable Valentine's Day.</p>
+							
+						</div> 
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a class="blog-bg" style="background-image: url(/static/images/BirthdayTable.jpg);"></a>
+						<div class="blog-text">
+							
+							<h3 style="color: white;">Birthday Party Table</h3>
+							<p>Celebrate your special day with a birthday party table that sparkles with joy! Indulge in a festively decorated setting filled with vibrant colors, delightful treats, and a personalized touch to make your birthday truly memorable. Let us take care of the details, so you can focus on making wonderful memories with friends and family.</p>
+							
+						</div> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="fh5co-started" class="fh5co-section animate-box" style="background-image: url(/static/images/Coffeeshop.jpg);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>Book a Table</h2>
+					<p>Indulge in a culinary journey like never before by reserving your table at Venada. Elevate your dining experience with our delectable menu, warm ambiance, and impeccable service.</p>
+					<p><a href="/Client/reservation" class="btn btn-primary btn-outline">Book Now</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer id="fh5co-footer" role="contentinfo" class="fh5co-section">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-4 fh5co-widget">
+					<h4>Venada</h4>
+					<p>Indulge in cozy ambiance and delectable flavors at our cafe. Sip, savor, and share moments with freshly brewed delights and artisanal treats. Your perfect escape for a delightful pause.</p>
+				</div>
+				<div class="col-md-2 col-md-push-1 fh5co-widget">
+					<h4>Links</h4>
+					<ul class="fh5co-footer-links">
+						<li><a href="/Client/clientindex/">Home</a></li>
+						<li><a href="/Client/aboutus">About</a></li>
+						<li><a href="/Client/menu/0">Menu</a></li>
+						
+					</ul>
+				</div>
+
+				
+
+				<div class="col-md-4 col-md-push-1 fh5co-widget">
+					<h4>Contact Information</h4>
+					<ul class="fh5co-footer-links">
+						<li>123 West 21th Street, <br> Suite 123 Ahemedabad Gujarat 123456</li>
+						<li>+91 1234567890</li>
+						<li>infovenada@gmail.com</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="row copyright">
+				<div class="col-md-12 text-center">
+					<p>
+						<a href="/Client/clientindex/"><img src="/static/images/Color logo - no background.svg" height="100px" width="130px"></a>
+					</p>
+					<p>
+						<small class="block">&copy; 2024 Venada All Rights Reserved.</small> 
+					</p>
+					<p>
+						<ul class="fh5co-social-icons">
+							<li><a href="#"><i class="icon-twitter2"></i></a></li>
+							<li><a href="#"><i class="icon-facebook2"></i></a></li>
+							<li><a href="#"><i class="icon-instagram2"></i></a></li>
+
+						</ul>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	</div>
+	{% endblock %}
+
+	

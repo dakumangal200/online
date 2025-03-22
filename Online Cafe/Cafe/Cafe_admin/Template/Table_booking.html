@@ -1,0 +1,74 @@
+{% extends "header_footer.html"%}
+{% load static %}
+{% block content %}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Table Booking </h3>
+              <nav aria-label="breadcrumb">
+                
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 grid-margin table-responsive">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Table Booking</h4>
+                     <table class="table table-responsive">
+                      <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Customer Name</th>
+                            <th>Phone Number</th>
+                            <th>Table ID</th>
+                            <th>Booking Date</th>
+                            <th>Booking Status</th>
+                            <th>Booking Time</th>
+                            <th>Number Of People</th>
+
+                            <th>Assign Table</th>
+                        </tr>
+                      </thead>
+                      {% for x in tablebooking %}
+                      <tbody>
+                        <tr>
+                          <td>{{x.Booking_id}}</td>
+                          <td>{{x.Customer_id.First_Name}}</td>
+                          <td>{{x.Phonenumber}}</td>
+                          <td>{{x.Table_id.Table_id}}</td>
+                          <td>{{x.Booking_Date}}</td>
+
+                          <td>{% if x.Booking_status == "0" %}
+                            Pending
+                            {% elif x.Booking_status == "1" %}
+                            Confirm
+                            {% else %}
+                              Reject
+                              {% endif %}
+                          </td>
+                             <td>{{x.Booking_Time}}</td>
+                          <td>{{x.NumberofPeople}}</td>
+                          <td><button><a href="/assigntable/{{x.Booking_id}}">Assign</a></button></td>
+                          
+
+                        </tr>
+                      
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+              
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="footer-inner-wraper">
+              
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      {% endblock %}
